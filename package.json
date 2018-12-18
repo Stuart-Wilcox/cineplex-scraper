@@ -1,0 +1,20 @@
+{
+  "name": "cineplex-scraper",
+  "version": "1.0.1",
+  "description": "Scrape Cineplex.com for date on Theatres, Movies and Showtimes",
+  "main": "scraper.js",
+  "scripts": {
+    "start": "scraper.js",
+    "prettier": "prettier --write scraper.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stuart Wilcox",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^13.1.0",
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.15.3"
+  }
+}
