@@ -1,4 +1,5 @@
 # Cineplex Scraper
+https://www.npmjs.com/package/cineplex-scraper
 
 `npm install cineplex-scraper`
 
