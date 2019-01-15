@@ -1,5 +1,5 @@
 /* External dependancies */
-const fetch = require("node-fetch");
+const fetch = require("request-promise-native");
 const { JSDOM } = require("jsdom");
 
 /* Internal dependancies */
@@ -27,7 +27,7 @@ const theatres = async function() {
      */
     const getTheatresPage = async function() {
       let rawHTML = await fetch(THEATRES_URL()); // fetch web page
-      rawHTML = await rawHTML.text(); // convert to text
+      let text = rawHTML;
 
       // the theatres are hard coded in an inline script on the page, so search for that line to the end and parse it as json
       const startIndex = rawHTML.search(/var participatingTheatres=/g);
@@ -62,7 +62,7 @@ const movies = async function() {
      */
     const getContentByPage = async function(pageNum) {
       let rawHTML = await fetch(NOW_PLAYING_URL(pageNum)); // make the http request
-      rawHTML = await rawHTML.text(); // convert buffered response to text
+      // rawHTML = await rawHTML.text(); // convert buffered response to text
 
       const content = new JSDOM(rawHTML); // create DOM tree out of the page
       const showtimeCards = content.window.document.getElementsByClassName(
@@ -106,7 +106,7 @@ const showtimes = async function(movieNameURL, theatreNameURL, date) {
       let rawHTML = await fetch(
         SHOWTIMES_URL(movieNameURL, theatreNameURL, date)
       ); // get the web page for showtimes
-      rawHTML = await rawHTML.text(); // convert to text
+      // rawHTML = await rawHTML.text(); // convert to text
 
       const content = new JSDOM(rawHTML); // create DOM to parse
       const showtimes = content.window.document.querySelectorAll(
